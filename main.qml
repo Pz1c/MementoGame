@@ -8,19 +8,54 @@ import ua.sp.memento 0.1
 import "qrc:/qml"
 
 Window {
+    id: mainWindow
     width: 640
     height: 480
     visible: true
     title: qsTr("Memento game")
 
 
-    MementoCore {
-        id: core
+    Rectangle {
+        id: rTop
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: 0.167 * parent.height
+
+        color: "grey"
+
+        BtnBig {
+            id: btnStart
+            anchors.left: parent.left
+            anchors.leftMargin: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 0.8 * parent.height
+            width: 0.25 * parent.width
+            text: "Start new game"
+
+            onClicked: {
+                core.startGame();
+            }
+        }
+
+        LargeText {
+            id: ltScore
+            anchors.right: parent.right
+            anchors.rightMargin: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 0.8 * parent.height
+            width: 0.25 * parent.width
+            text: "Score: 0"
+        }
     }
 
     ScrollView {
         id: svMain
-        anchors.fill: parent
+        anchors.top: rTop.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+
         contentWidth: -1
         contentHeight: 2720
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
@@ -66,9 +101,29 @@ Window {
 
                     onClicked: {
                         console.log("MementoCard clicked", index);
-                        toogle();
+                        //toogle();
+                        core.click(index);
                     }
                 }
+            }
+        }
+
+        MementoCore {
+            id: core
+
+            onScoreChanged: {
+                var new_score = "Score: " + core.score;
+                console.log("core.onScoreChanged", new_score);
+                ltScore.text = new_score;
+            }
+
+            onAction: {
+                console.log("core.onAction", idx, command);
+            }
+
+            onGameStarted: {
+                console.log("core.onGameStarted", card_model);
+                gvMain.model = JSON.parse(card_model);
             }
         }
     }

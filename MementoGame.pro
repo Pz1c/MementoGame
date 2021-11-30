@@ -8,6 +8,10 @@ CONFIG += c++11
 
 SOURCES += \
         cpp/qmementocore.cpp \
+        cpp/qmgbase.cpp \
+        cpp/qmgcard.cpp \
+        cpp/qmgchild1.cpp \
+        cpp/qmgchild2.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -25,4 +29,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     cpp/qmementocore.h \
-    cpp/tgaimageprovider.h
+    cpp/qmgbase.h \
+    cpp/qmgcard.h \
+    cpp/qmgchild1.h \
+    cpp/qmgchild2.h

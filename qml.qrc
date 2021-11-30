@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>qml/MementoCard.qml</file>
+        <file>qml/BtnBig.qml</file>
+        <file>qml/LargeText.qml</file>
     </qresource>
 </RCC>
