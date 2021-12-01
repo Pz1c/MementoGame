@@ -28,7 +28,7 @@ Window {
             id: btnStart
             anchors.left: parent.left
             anchors.leftMargin: 5
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             height: 0.8 * parent.height
             width: 0.25 * parent.width
             text: "Start new game"
@@ -42,7 +42,7 @@ Window {
             id: ltScore
             anchors.right: parent.right
             anchors.rightMargin: 5
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             height: 0.8 * parent.height
             width: 0.25 * parent.width
             text: "Score: 0"
@@ -57,18 +57,20 @@ Window {
         anchors.right: parent.right
 
         contentWidth: -1
-        contentHeight: 2720
+        contentHeight: gvMain.height
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
         ScrollBar.vertical.policy: ScrollBar.AsNeeded
 
         GridView {
             id: gvMain
-            width: 640
-            height: 2720
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: Math.floor(100 / Math.ceil(mainWindow.width / cellWidth)) * cellHeight
             cellHeight: 158
             cellWidth: 105
 
-            model: ["file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
+            model: [/*"file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
@@ -86,7 +88,7 @@ Window {
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_a_bat_l.tga",
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_annis_l.tga",
                 "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_annis_l.tga",
-                "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_wolfwint_l.tga"]
+                "file:///C:/Project/Qt/MementoGame/res/nw_portraits/po_wolfwint_l.tga"*/]
 
             delegate: Column {
                 height: 158
@@ -94,7 +96,7 @@ Window {
 
                 MementoCard {
                     id: mdItem
-                    source: gvMain.model[index]
+                    source: gvMain.model[index].src
 
                     height: 156
                     width: 100
@@ -126,5 +128,9 @@ Window {
                 gvMain.model = JSON.parse(card_model);
             }
         }
+    }
+
+    Component.onCompleted: {
+        core.startGame();
     }
 }

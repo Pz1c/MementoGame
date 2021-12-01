@@ -16,6 +16,10 @@ QMementoCore::~QMementoCore() {
     _cards.clear();
 }
 
+int QMementoCore::score() {
+    return _score;
+}
+
 void QMementoCore::startGame() {
 
 }

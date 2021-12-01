@@ -13,10 +13,11 @@ public:
 
     virtual QString json();
 
-
+protected:
+    int _id;
 
 private:
-    int _id;
+
     static int GLOBAL_ID;
 };
 

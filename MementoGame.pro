@@ -10,8 +10,8 @@ SOURCES += \
         cpp/qmementocore.cpp \
         cpp/qmgbase.cpp \
         cpp/qmgcard.cpp \
-        cpp/qmgchild1.cpp \
-        cpp/qmgchild2.cpp \
+        cpp/qmgimg.cpp \
+        cpp/qmgstate.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -31,5 +31,5 @@ HEADERS += \
     cpp/qmementocore.h \
     cpp/qmgbase.h \
     cpp/qmgcard.h \
-    cpp/qmgchild1.h \
-    cpp/qmgchild2.h
+    cpp/qmgimg.h \
+    cpp/qmgstate.h

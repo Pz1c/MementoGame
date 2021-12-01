@@ -1,30 +1,25 @@
-#ifndef QMGCHILD2_H
-#define QMGCHILD2_H
+#ifndef QMGCARD_H
+#define QMGCARD_H
 
 #include <QObject>
 #include <QDebug>
-#include "qmgchild1.h"
-#include "qmgchild2.h"
+#include "qmgimg.h"
+#include "qmgstate.h"
 
-class QMGCard : public QMGChild1, QMGChild2
+class QMGCard : public QMGImg, public QMGState
 {
     Q_OBJECT
 
 public:
     explicit QMGCard(QObject *parent = nullptr);
+    explicit QMGCard(const char* src, QObject *parent = nullptr);
+    explicit QMGCard(const QMGCard& copy_from);
+    explicit QMGCard(QMGCard&& move_from);
+    QMGCard& operator = (QMGCard assign_from);
     ~QMGCard();
-
-signals:
-    
-public slots:
-
-protected slots:
-    
-protected:
-
-private:
+    QString json() override;
     
 
 };
 
-#endif // QMGCHILD2_H
+#endif // QMGCARD_H

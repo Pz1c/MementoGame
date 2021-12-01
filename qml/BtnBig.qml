@@ -38,6 +38,14 @@ Rectangle {
                 button.clicked();
             }
         }
+
+        onPressed: {
+            button.color = border_color_active;
+        }
+
+        onReleased: {
+            button.color = transparent ? "transparent" : (active ? bg_color_active : bg_color_inactive);
+        }
     }
 
     function onFinishCreation() {
