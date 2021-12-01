@@ -114,7 +114,7 @@ Window {
             id: core
 
             onScoreChanged: {
-                var new_score = "Score: " + core.score;
+                var new_score = "Score: " + score;
                 console.log("core.onScoreChanged", new_score);
                 ltScore.text = new_score;
             }

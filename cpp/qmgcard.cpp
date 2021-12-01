@@ -13,7 +13,7 @@ QMGCard::QMGCard(const char* src, QObject *parent) :
 }
 
 QMGCard::QMGCard(const QMGCard& copy_from) {
-    int ln = std::strlen(copy_from._src) + 1;
+    size_t ln = std::strlen(copy_from._src) + 1;
     if (_src) {
         delete [] _src;
     }

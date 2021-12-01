@@ -9,7 +9,7 @@ QMGBase::QMGBase(QObject *parent) :
 }
 
 QMGBase::~QMGBase() {
-    
+    qDebug() << "QMGBase::~QMGBase" << _id;
 }
 
 QString QMGBase::json() {
