@@ -11,7 +11,7 @@ public:
     explicit QMGBase(QObject *parent = nullptr);
     virtual ~QMGBase();
 
-    virtual QString json();
+    virtual QString json() const;
 
 protected:
     int _id;

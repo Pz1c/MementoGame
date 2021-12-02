@@ -10,7 +10,10 @@ Item {
     Rectangle {
         id: mcBack
         anchors.fill: parent
-        opacity: 1
+        anchors.leftMargin: 3
+        anchors.rightMargin: 3
+        anchors.topMargin: 3
+        anchors.bottomMargin: 3
         color: "red"
         border.color: "blue"
         border.width: 2
@@ -20,7 +23,7 @@ Item {
             anchors.centerIn: parent
             width: parent.width - mcBack.border.width * 2
             height: parent.height - mcBack.border.width * 2
-            opacity: 0
+            opacity: status === 0 ? 1 : 0
         }
 
         MouseArea {
@@ -41,6 +44,9 @@ Item {
         from: 0
         to: 1
         duration: 300
+        onFinished: {
+            status = 1;
+        }
     }
 
     NumberAnimation {
@@ -50,6 +56,9 @@ Item {
         from: 1
         to: 0
         duration: 300
+        onFinished: {
+            status = 0;
+        }
     }
 
     function showFront() {
@@ -57,6 +66,7 @@ Item {
     }
 
     function showBack() {
+        status = 0;
         paBack.start();
     }
 
@@ -64,8 +74,7 @@ Item {
         if (paFront.running || paBack.running) {
             return;
         }
-        status = status ? 0 : 1;
-        if (status === 1) {
+        if (status === 0) {
             showFront();
         } else {
             showBack();

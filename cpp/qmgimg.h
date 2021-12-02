@@ -14,7 +14,7 @@ public:
     explicit QMGImg(const char *src, QObject *parent = nullptr);
     //explicit QMGChild1(const QString QObject *parent = nullptr);
     virtual ~QMGImg();
-    virtual QString json();
+    virtual QString json() const;
 
 protected:
     char* _src; // path to image file

@@ -5,8 +5,16 @@
 #include <QDebug>
 #include <QList>
 #include <QDir>
+#include <algorithm>
+#include <random>
+#include <QTimer>
+#include <QRandomGenerator>
 
 #include "qmgcard.h"
+
+#define MC_CARD_IN_GAME 50
+#define MC_SCORE_BONUS 2
+#define MC_SCORE_PENALTY -1
 
 class QMementoCore : public QObject
 {
@@ -21,20 +29,24 @@ signals:
     void scoreChanged(int score);
     void action(int idx, QString command);
     void gameStarted(QString card_model);
+    void ready();
 
 public slots:
     void startGame();
     void click(int card_idx);
 
-protected slots:
-    
 protected:
+    void prepareImgArray();
+    void checkImgArray();
+    void fillGameImgArray();
+    void changeScore(int diff);
 
 private:
-    QList<QMGCard *> _cards;
     int _score;
-    //QString _pathToImgFolder;
-    QStringList _allImgs;
+    int _imgCurIdx;
+    QList<int> _openCard;
+    QList<QMGCard *> _cards;
+    QList<QMGCard *> _allCard;
     QString _fullPathToImgFolder;
 };
 

@@ -12,6 +12,6 @@ QMGBase::~QMGBase() {
     qDebug() << "QMGBase::~QMGBase" << _id;
 }
 
-QString QMGBase::json() {
+QString QMGBase::json() const {
     return QString("{\"id\":%1}").arg(QString::number(_id));
 }

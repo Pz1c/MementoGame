@@ -23,6 +23,6 @@ QMGImg::~QMGImg() {
     }
 }
 
-QString QMGImg::json() {
+QString QMGImg::json() const {
     return QString("{\"id\":%1,\"src\":\"%2\"}").arg(QString::number(_id), _src);
 }

@@ -17,9 +17,8 @@ public:
     explicit QMGCard(QMGCard&& move_from);
     QMGCard& operator = (QMGCard assign_from);
     ~QMGCard();
-    QString json() override;
-    
-
+    virtual QString json() const override;
+    bool checkEqual(const QMGCard &item) const;
 };
 
 #endif // QMGCARD_H
